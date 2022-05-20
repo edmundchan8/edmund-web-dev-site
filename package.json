@@ -15,7 +15,9 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
+    "@fontsource/lora": "^4.5.9",
     "gatsby": "^4.14.1",
+    "gatsby-source-filesystem": "^4.14.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
   }
