@@ -1,9 +1,10 @@
 import * as React from 'react'
+import { largeHeaders } from '../components/layout.module.css'
 
 const AboutPage = () => {
     return(
         <main>
-            <h1>About Me</h1>
+            <p className={largeHeaders}>About Me</p>
             <p>Web Application Developer for Cultivate Learning at the University of Washington</p>
             <p>MAMP Stack</p>
             <p>Proficient in C#, Javascript, PHP, ReactJS, Python, Angular, HTML, CSS and Bootstrap.</p>

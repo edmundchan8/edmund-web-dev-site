@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Karma:wght@500&display=swap');
 .container {
     margin: auto;
-    max-width: 600px;
+    max-width: 620px;
     font-family: sans-serif;
     text-align: center;
     font-family: 'Lora', sans-serif;
@@ -27,3 +27,15 @@ p {
   font-family: 'Karma', serif;
 }
 
+.largeHeaders {
+  font-size: 50px;
+  font-weight: 800;
+}
+
+.blogText {
+  text-align: right;
+}
+
+.topBottomMargin{
+  margin: 10px 0 10px 0;
+}

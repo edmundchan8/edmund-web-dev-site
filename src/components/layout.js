@@ -10,7 +10,8 @@ const Layout = ({ pageTitle, children }) => {
       <nav>
         <ul className={alignRight}>
           <li className={listItems}><Link to="/">Home</Link></li>
-          <li className={`${listItems}`}><Link to="blog">Blog</Link></li>
+          <li className={listItems}><Link to="/apps">Apps</Link></li>
+          <li className={`${listItems}`}><Link to="/blog">Blog</Link></li>
         </ul>
       </nav>
       <main>

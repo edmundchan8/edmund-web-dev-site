@@ -1,40 +1,37 @@
 import * as React from 'react'
 import Layout from '../components/layout'
+import { largeHeaders, blogText } from '../components/layout.module.css'
 import { graphql } from 'gatsby'
+import { MDXRenderer } from 'gatsby-plugin-mdx'
 
 const BlogPage = ( {data} ) => {
     return(
-        <Layout pageTitle="My Blog">
-            <ul>
+        <Layout>
             {
-                data.allFile.nodes.map( node => (
-                    <li key={node.name}>
-                        {node.name}
-                    </li>
+                data.allMdx.nodes.map((node)=> (
+                    <article kay={node.id}>
+                        <p className={largeHeaders}>{node.frontmatter.title}</p>
+                        <MDXRenderer className={blogText}>{node.body}</MDXRenderer>
+                    </article>
                 ))
             }
-            </ul>
-            <h2>Prologue - December 2012</h2>
-            <p>I never had to deal with emails from work, it wasn't the type of job where one regularly checked in with their manager and team to stay uptodate with the latest work issues, especially
-            since the number of employees at the company amounted to a grand total of 2, my boss and me.</p>
-            <p>So it was odd to see that my boss had emailed me,  not only because I was on vacation back home in the UK, but because they never did email me for anything important.  Nonetheless, I opened
-            it up immediately, it hit me</p>
-            <h4>"Termination of Employment"</h4>
-            <p>To rub salt into my wounds, it was a few days before Christmas as well, but for once in my life, I didn't feel too agrieved by it all, as it did cross my mind to leave and seek new pastures.
-            </p>  
         </Layout>
     )
 }
 
 export const query = graphql `
 query {
-    allFile {
+    allMdx(sort: {fields: frontmatter___date, order: DESC}) {
       nodes {
-        name
+        frontmatter {
+          date(formatString: "MMMM D, YYYY")
+          title
+        }
+        id
+        body
       }
     }
-  }
-  
+  }    
 `
 
 export default BlogPage
