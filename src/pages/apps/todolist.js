@@ -1,34 +1,43 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 // import { largeHeaders, listItems, topBottomMargin } from '../../components/layout.module.css'
 import Layout from '../../components/layout'
 
 function ToDoListPage (){
 
     const [todo, setTodo] = useState("");
-    let savedList = [];
-    if (JSON.parse(localStorage.getItem('list')) !== null){
-        savedList = JSON.parse(localStorage.getItem('list'));
-    }
-    const [list, setList] = useState(savedList);
-    
-//    localStorage.setItem("list", []);
+    const [list, setList] = useState([]);
+    useEffect(() => {
+        const storageTodos = JSON.parse(localStorage.getItem('list'));
+        if(storageTodos){
+            setList(storageTodos);
+        }
+    }, []);
+
+    // When todo changes, set the todo list
+    useEffect(() => {
+        localStorage.setItem("list", JSON.stringify(list));
+    }, [list]);
 
     function handleChange(event){
         setTodo(event.target.value);
+        
     }
 
     function handleClick(){
         setList(prevValue => {return [...prevValue, todo]});
+        localStorage.setItem("list", JSON.stringify(list));
         setTodo('');
     }
 
     function handleSave(){
-        localStorage.setItem("list", JSON.stringify(list));
+       
     }
 
     function handleDelete(){
         localStorage.clear("list");
     }
+
+    console.log(localStorage.getItem('list'));
 
     return (
         <Layout>
