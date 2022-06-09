@@ -6,8 +6,11 @@ function ToDoListPage (){
 
     const [todo, setTodo] = useState("");
     const [list, setList] = useState([]);
+
+    let storageTodos = typeof window !== 'undefined' ? localStorage.getItem('list') : null
+
     useEffect(() => {
-        const storageTodos = JSON.parse(localStorage.getItem('list'));
+        storageTodos = JSON.parse(localStorage.getItem('list'));
         if(storageTodos){
             setList(storageTodos);
         }
